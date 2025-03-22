@@ -31,4 +31,13 @@ public class Appointment {
     @Future
     private LocalDateTime schedule;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private AppointmentStatus status = AppointmentStatus.CONFIRMED;
+
+    public Appointment(Doctor doctor, LocalDateTime schedule, Patient patient) {
+        this.doctor = doctor;
+        this.schedule = schedule;
+        this.patient = patient;
+    }
 }

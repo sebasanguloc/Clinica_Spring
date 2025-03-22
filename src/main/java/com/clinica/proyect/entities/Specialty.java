@@ -15,7 +15,7 @@ public class Specialty {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false, length = 255, unique = true)
     @Size(min = 1,max = 255)

@@ -21,18 +21,20 @@ public class Patient {
     private Long id;
 
     @Column(nullable = false, length = 100)
+    @Size(min = 1, max = 100)
     private String name;
 
     @Column(nullable = false,length = 100)
     @Size(min = 1,max = 100)
     private String lastname;
 
+    @Column(nullable = false)
     @Min(1)
     @Max(150)
     private Integer age;
 
     @Column(nullable = false, length = 20, unique = true)
-    @NotBlank
+    @Size(min = 1, max = 100)
     private String phone;
 
     public Patient(String name, String lastname, Integer age, String phone) {

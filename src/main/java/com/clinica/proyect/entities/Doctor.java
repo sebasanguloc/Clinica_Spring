@@ -24,10 +24,11 @@ public class Doctor {
     private String name;
 
     @Column(nullable = false, length = 100)
+    @Size(min = 1, max = 100)
     private String lastname;
 
     @ManyToOne
-    @JoinColumn(name = "specailty_id",nullable = false)
+    @JoinColumn(name = "specialty_id", nullable = false)
     private Specialty specialty;
 
     @Column(nullable = false)
