@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface ISpecialtyService {
 
-    List<Specialty> findALl();
+    List<Specialty> findAll();
 
     Optional<Specialty> findById(Long id);
 
@@ -15,5 +15,5 @@ public interface ISpecialtyService {
 
     Specialty update(Specialty specialty);
 
-    Specialty delete(Long id);
+    Boolean delete(Long id);
 }

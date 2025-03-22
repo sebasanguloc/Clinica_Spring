@@ -9,9 +9,11 @@ public interface IAppointmentService {
 
     List<Appointment> findAll();
 
-    Optional<Appointment> findById();
+    Optional<Appointment> findById(Long id);
+
+    Appointment create(Appointment appointment);
 
     Appointment update(Appointment appointment);
 
-    Appointment delete(Long id);
+    Boolean delete(Long id);
 }

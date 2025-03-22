@@ -11,10 +11,10 @@ public interface IDoctorService {
 
     Optional<Doctor> findById(Long id);
 
-    Doctor create(Doctor create);
+    Doctor create(Doctor doctor);
 
     Doctor update(Doctor doctor);
 
-    Doctor delete(Long id);
+    Boolean delete(Long id);
 
 }

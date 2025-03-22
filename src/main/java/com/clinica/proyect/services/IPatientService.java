@@ -15,6 +15,6 @@ public interface IPatientService {
 
     Patient update(Patient patient);
 
-    Patient delete(Long id);
+    Boolean delete(Long id);
 
 }
