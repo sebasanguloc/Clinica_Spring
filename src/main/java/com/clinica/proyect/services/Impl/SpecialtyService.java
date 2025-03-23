@@ -42,7 +42,8 @@ public class SpecialtyService implements ISpecialtyService {
     public Specialty update(Specialty specialty) {
         Specialty specialtyDB = findById(specialty.getId());
         if(specialtyDB == null ) throw new EntityNotFoundException("Specialty not found");
-        return create(specialty);
+        specialtyDB.setName(specialty.getName().toLowerCase());
+        return specialtyRepository.save(specialtyDB);
     }
 
     @Override

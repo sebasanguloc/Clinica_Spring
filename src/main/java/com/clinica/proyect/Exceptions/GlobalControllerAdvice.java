@@ -35,7 +35,7 @@ public class GlobalControllerAdvice {
     @ExceptionHandler({EntityNotFoundException.class})
     public ResponseEntity<ErrorResponse> handlerEntityNotFoundException(EntityNotFoundException ex, HttpServletRequest request){
         ErrorResponse error = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.NOT_FOUND.value(),
                 "Entity Not Found",
                 ex.getMessage(),
                 request.getRequestURI()
