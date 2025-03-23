@@ -9,11 +9,11 @@ public interface ISpecialtyService {
 
     List<Specialty> findAll();
 
-    Optional<Specialty> findById(Long id);
+    Specialty findById(Long id);
 
     Specialty create(Specialty specialty);
 
     Specialty update(Specialty specialty);
 
-    Boolean delete(Long id);
+    void delete(Long id);
 }
