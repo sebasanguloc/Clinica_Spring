@@ -1,4 +1,4 @@
-package com.clinica.proyect.Exceptions;
+package com.clinica.proyect.exceptions;
 
 import lombok.Getter;
 import lombok.Setter;

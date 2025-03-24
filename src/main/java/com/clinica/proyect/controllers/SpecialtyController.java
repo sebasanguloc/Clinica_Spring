@@ -1,6 +1,6 @@
 package com.clinica.proyect.controllers;
 
-import com.clinica.proyect.Exceptions.ValidationException;
+import com.clinica.proyect.exceptions.ValidationException;
 import com.clinica.proyect.entities.Specialty;
 import com.clinica.proyect.services.ISpecialtyService;
 import jakarta.validation.Valid;

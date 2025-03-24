@@ -47,7 +47,7 @@ public class DoctorService implements IDoctorService {
     public Doctor create(DoctorDTO doctor) {
         Specialty specialty = specialtyService.findById(doctor.getSpecialtyId());
 
-        System.out.println(specialty);
+        //System.out.println(specialty);
         Doctor newDoctor = new Doctor(
                 doctor.getName().toLowerCase(),
                 doctor.getLastname().toLowerCase(),

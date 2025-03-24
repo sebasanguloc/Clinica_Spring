@@ -1,17 +1,15 @@
 package com.clinica.proyect.controllers;
 
-import com.clinica.proyect.Exceptions.ValidationException;
+import com.clinica.proyect.exceptions.ValidationException;
 import com.clinica.proyect.dto.DoctorDTO;
 import com.clinica.proyect.entities.Doctor;
 import com.clinica.proyect.services.IDoctorService;
-import jakarta.servlet.ServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +65,7 @@ public class DoctorController {
     public ResponseEntity<?> deleteDoctor(@PathVariable Long id){
         doctorService.delete(id);
         Map<String, String> json = new HashMap<>();
-        json.put("message","Specialty deleted succesfully");
+        json.put("message","Doctor deleted succesfully");
         return ResponseEntity.status(HttpStatus.OK).body(json);
     }
 

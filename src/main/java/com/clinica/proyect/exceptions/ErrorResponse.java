@@ -1,4 +1,4 @@
-package com.clinica.proyect.Exceptions;
+package com.clinica.proyect.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
