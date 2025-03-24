@@ -14,7 +14,7 @@ public interface IDoctorService {
 
     Doctor create(DoctorDTO doctor);
 
-    Doctor update(Doctor doctor);
+    Doctor update(DoctorDTO doctor);
 
     Boolean delete(Long id);
 

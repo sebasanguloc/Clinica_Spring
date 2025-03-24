@@ -39,11 +39,22 @@ public class DoctorController {
     @PostMapping
     public ResponseEntity<Doctor> createDoctor(@RequestBody @Valid DoctorDTO doctor, BindingResult result){
         if(result.hasErrors()){
-            throw new ValidationException("Error in Doctor entity", result);
+            throw new ValidationException("Error creating Doctor entity", result);
         }
-
         Doctor newDoctor = doctorService.create(doctor);
         return ResponseEntity.status(HttpStatus.CREATED).body(newDoctor);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Doctor> updateDoctor(@PathVariable Long id, @RequestBody @Valid DoctorDTO doctor, BindingResult result){
+        if(result.hasErrors()){
+            throw new ValidationException("Error updating Doctor entity", result);
+        }
+        doctor.setId(id);
+        Doctor newDoctor = doctorService.update(doctor);
+        return ResponseEntity.status(HttpStatus.OK).body(newDoctor);
+    }
+
+
 
 }

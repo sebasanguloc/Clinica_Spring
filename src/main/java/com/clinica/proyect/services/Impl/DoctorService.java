@@ -52,8 +52,17 @@ public class DoctorService implements IDoctorService {
     }
 
     @Override
-    public Doctor update(Doctor doctor) {
-        return null;
+    public Doctor update(DoctorDTO doctor) {
+        Doctor doctorDb = findById(doctor.getId());
+        Specialty specialty = specialtyService.findById(doctor.getSpecialtyId());
+
+        doctorDb.setName(doctor.getName());
+        doctorDb.setLastname(doctor.getLastname());
+        doctorDb.setSpecialty(specialty);
+        doctorDb.setScheduleStart(doctor.getScheduleStart());
+        doctorDb.setScheduleEnd(doctor.getScheduleEnd());
+
+        return doctorRepository.save(doctorDb);
     }
 
     @Override
