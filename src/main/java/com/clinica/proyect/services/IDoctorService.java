@@ -4,6 +4,7 @@ import com.clinica.proyect.dto.DoctorDTO;
 import com.clinica.proyect.entities.Doctor;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface IDoctorService {
@@ -15,6 +16,8 @@ public interface IDoctorService {
     Doctor create(DoctorDTO doctor);
 
     Doctor update(DoctorDTO doctor);
+
+    Doctor partialUpdate(Long id, Map<String, Object> updates);
 
     Boolean delete(Long id);
 

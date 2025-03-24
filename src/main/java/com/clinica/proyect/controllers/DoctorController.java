@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/doctors")
@@ -55,6 +56,10 @@ public class DoctorController {
         return ResponseEntity.status(HttpStatus.OK).body(newDoctor);
     }
 
-
+    @PatchMapping("/{id}")
+    public ResponseEntity<Doctor> patchDoctor(@PathVariable Long id, @RequestBody Map<String, Object> updates){
+        Doctor doctor = doctorService.partialUpdate(id,updates);
+        return ResponseEntity.status(HttpStatus.OK).body(doctor);
+    }
 
 }
