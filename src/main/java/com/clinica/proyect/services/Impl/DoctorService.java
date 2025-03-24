@@ -10,6 +10,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalTime;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class DoctorService implements IDoctorService {
 
     private final IDoctorRepository doctorRepository;
@@ -27,17 +29,20 @@ public class DoctorService implements IDoctorService {
         this.specialtyService = specialtyService;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Doctor> findAll() {
         return doctorRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Doctor findById(Long id) {
         Optional<Doctor> doctorOpt = doctorRepository.findById(id);
         return doctorOpt.orElseThrow(() -> new EntityNotFoundException("Doctor Not Found"));
     }
 
+    @Transactional
     @Override
     public Doctor create(DoctorDTO doctor) {
         Specialty specialty = specialtyService.findById(doctor.getSpecialtyId());
@@ -53,6 +58,7 @@ public class DoctorService implements IDoctorService {
         return doctorRepository.save(newDoctor);
     }
 
+    @Transactional
     @Override
     public Doctor update(DoctorDTO doctor) {
         Doctor doctorDb = findById(doctor.getId());
@@ -67,6 +73,7 @@ public class DoctorService implements IDoctorService {
         return doctorRepository.save(doctorDb);
     }
 
+    @Transactional
     @Override
     public Doctor partialUpdate(Long id, Map<String, Object> updates) {
         Doctor doctorDb = findById(id);
@@ -93,8 +100,13 @@ public class DoctorService implements IDoctorService {
         return doctorRepository.save(doctorDb);
     }
 
+    @Transactional
     @Override
-    public Boolean delete(Long id) {
-        return null;
+    public void delete(Long id) {
+        if(!doctorRepository.existsById(id)){
+            throw new EntityNotFoundException("Doctor not found");
+        } else {
+            doctorRepository.deleteById(id);
+        }
     }
 }

@@ -19,6 +19,6 @@ public interface IDoctorService {
 
     Doctor partialUpdate(Long id, Map<String, Object> updates);
 
-    Boolean delete(Long id);
+    void delete(Long id);
 
 }

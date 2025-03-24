@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +61,14 @@ public class DoctorController {
     public ResponseEntity<Doctor> patchDoctor(@PathVariable Long id, @RequestBody Map<String, Object> updates){
         Doctor doctor = doctorService.partialUpdate(id,updates);
         return ResponseEntity.status(HttpStatus.OK).body(doctor);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDoctor(@PathVariable Long id){
+        doctorService.delete(id);
+        Map<String, String> json = new HashMap<>();
+        json.put("message","Specialty deleted succesfully");
+        return ResponseEntity.status(HttpStatus.OK).body(json);
     }
 
 }
