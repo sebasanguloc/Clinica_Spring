@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+@Slf4j
 @RestControllerAdvice
 public class GlobalControllerAdvice {
 
@@ -28,7 +30,7 @@ public class GlobalControllerAdvice {
                 request.getRequestURI(),
                 ex.getErrors()
         );
-
+        log.warn("Error de Validacion");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
@@ -40,6 +42,7 @@ public class GlobalControllerAdvice {
                 ex.getMessage(),
                 request.getRequestURI()
         );
+        log.warn("Error entidad no encontrada");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
@@ -61,6 +64,7 @@ public class GlobalControllerAdvice {
                 errors
         );
 
+        log.warn("Error a nivel de JPA/Hibernate");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
@@ -80,6 +84,7 @@ public class GlobalControllerAdvice {
                 errors
         );
 
+        log.warn("Error a nivel de @Valid");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
@@ -92,6 +97,9 @@ public class GlobalControllerAdvice {
                 request.getRequestURI()
         );
 
+        log.warn("Error Global");
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
     }
+
+
 }

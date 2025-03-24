@@ -28,8 +28,8 @@ public class SpecialtyService implements ISpecialtyService {
 
     @Override
     public Specialty findById(Long id) {
-        Optional<Specialty> specialty = specialtyRepository.findById(id);
-        return specialty.orElseThrow(() -> new EntityNotFoundException("Specialty Not Found"));
+        Optional<Specialty> specialtyOpt = specialtyRepository.findById(id);
+        return specialtyOpt.orElseThrow(() -> new EntityNotFoundException("Specialty Not Found"));
     }
 
     @Override

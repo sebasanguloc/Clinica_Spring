@@ -1,5 +1,6 @@
 package com.clinica.proyect.services;
 
+import com.clinica.proyect.dto.DoctorDTO;
 import com.clinica.proyect.entities.Doctor;
 
 import java.util.List;
@@ -9,9 +10,9 @@ public interface IDoctorService {
 
     List<Doctor> findAll();
 
-    Optional<Doctor> findById(Long id);
+    Doctor findById(Long id);
 
-    Doctor create(Doctor doctor);
+    Doctor create(DoctorDTO doctor);
 
     Doctor update(Doctor doctor);
 

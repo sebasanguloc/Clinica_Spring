@@ -37,12 +37,12 @@ public class Doctor {
     @Column(nullable = false)
     private LocalTime scheduleEnd;
 
-    public Doctor(LocalTime scheduleEnd, LocalTime scheduleStart, Specialty specialty, String lastname, String name) {
-        this.scheduleEnd = scheduleEnd;
-        this.scheduleStart = scheduleStart;
-        this.specialty = specialty;
-        this.lastname = lastname;
+    public Doctor(String name, String lastname, Specialty specialty, LocalTime scheduleStart, LocalTime scheduleEnd) {
         this.name = name;
+        this.lastname = lastname;
+        this.specialty = specialty;
+        this.scheduleStart = scheduleStart;
+        this.scheduleEnd = scheduleEnd;
     }
 }
 
